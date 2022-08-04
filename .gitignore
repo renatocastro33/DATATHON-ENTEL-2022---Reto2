@@ -1,3 +1,16 @@
+*ipynb_checkpoints
+
+*.ckpt
+*catboost_info/
+catboost_info
+notebooks/catboost_info
+
+notebooks/cristian/lightning_logs
+notebooks/cristian/lightning_logs/
+notebooks/cristian/optuna_test
+
+results/*.csv
+
 
 *_converted.csv
 
