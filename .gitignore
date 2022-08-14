@@ -1,3 +1,5 @@
+*.zip
+
 requirements.txt
 setup.sh
 
