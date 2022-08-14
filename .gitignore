@@ -1,3 +1,17 @@
+requirements.txt
+setup.sh
+
+*.csv
+
+*.pkl
+
+
+notebooks/cristian/reference
+notebooks/cristian/references
+
+requirements.txt
+setup.sh
+
 *ipynb_checkpoints
 
 *.ckpt
