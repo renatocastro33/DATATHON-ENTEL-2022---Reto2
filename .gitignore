@@ -1,6 +1,7 @@
 requirements.txt
 setup.sh
 
+*.csv
 
 *.pkl
 
