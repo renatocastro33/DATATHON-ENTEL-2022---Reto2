@@ -143,6 +143,11 @@ def training_model(model_type,model_version,X_train,y_train,X_validation,y_valid
     submission_weeks_plot_name_to_save   = metrics_name +'_prediction_submission_weeks.png'
     path_weeks_submission      = os.path.join(directory_model,submission_weeks_plot_name_to_save)
     submission_analysis.save_plot_submission_weeks(df_submission,path_weeks_submission)
+
+    
+    submission_total_weeks_plot_name_to_save   = metrics_name +'_prediction_submission_total_weeks.png'
+    path_total_weeks_submission      = os.path.join(directory_model,submission_total_weeks_plot_name_to_save)
+    submission_analysis.save_plot_submission_total_weeks(df_submission,path_total_weeks_submission)
     
     return X_validation_pred,X_test_pred,df_submission,model.get_feature_importance()
 
@@ -278,5 +283,8 @@ def training_model_cv(model_type,model_version,X_train,y_train,X_test,y_test,X_s
     path_weeks_submission      = os.path.join(directory_model,submission_weeks_plot_name_to_save)
     submission_analysis.save_plot_submission_weeks(df_submission,path_weeks_submission)
     
+    submission_total_weeks_plot_name_to_save   = metrics_name +'_prediction_submission_total_weeks.png'
+    path_total_weeks_submission      = os.path.join(directory_model,submission_total_weeks_plot_name_to_save)
+    submission_analysis.save_plot_submission_total_weeks(df_submission,path_total_weeks_submission)
     
     return df_submission,all_features 
