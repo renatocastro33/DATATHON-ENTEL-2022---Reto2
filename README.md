@@ -92,8 +92,8 @@ XXXX|PDV1|XXXX|Semana 57,3
         <li>En la carpeta <b>notebooks</b>, correr el notebook 2.Modeling_Prophet_Ratios.ipynb o el script Modeling_Prophet_Ratios.py. (Ver Recomendación 2)</li>
         <li>En la carpeta <b>notebooks/Forecasting_por_semanas</b>, correr el notebook 3.PreprocesamientoTemporal.ipynb y 4.CreacionDatasetTemporal.ipynb o sus scripts .py homólogos (Ver Recomendación 2).
         <li>Alternativamente si se desea ahorrar el uso de memoria RAM y tiempo (2 horas aprox.) para el procesamiento temporal de la data, puede omitir el paso 3 y descargar todos los archivos de la siguiente ruta: https://drive.google.com/drive/u/1/folders/1ZYyjUH2FAHhVYJ9avH_GFFhOjAP_ekRV</li>
-        
-        
+        <li>En la carpeta <b>notebooks/Forecasting_por_semanas</b>, correr los notebooks 5.Entrenamiento_modelo1.ipynb, 6.Entrenamiento_modelo2.ipynb y 7.Ensamblaje_de_modelos.ipynb en ese orden o correr sus scripts homólogos. (Ver Recomendación 2)</li>
+        <li>Los valores de la predicción del forecasting se encontrarán en la carpeta Results con el nombre <code>submission_model_final.csv</code>
     </ol>
 </div>
 
