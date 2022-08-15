@@ -1,4 +1,4 @@
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div align="center">
     <img src='resources/Fondo_Datathon_Entel.jpeg'
      width="800" height="300"/>
@@ -13,8 +13,8 @@
 <div>
     <b>Integrantes</b> 
     <ul>
-        <li>Renato Castro Cruz <i class="fab fa-linkedin"></i> </li>
-        <li>Cristian Lazo Quispe <i class="fab fa-linkedin"></i> </li>
+        <li>Renato Castro Cruz <a href='https://www.linkedin.com/in/renato-castro-cruz-317404137/'><i class="fab fa-linkedin"></i></a> </li>
+        <li>Cristian Lazo Quispe <a href='linkedin.com/in/cristian-lazo-quispe'><i class="fab fa-linkedin"></i></a> </li>
     </ul>
 </div>
 
