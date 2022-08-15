@@ -7,7 +7,7 @@
 
 
 
-<p>Desarrollado por:<b> Insight ML</b></p>
+<p>Desarrollado por:<b> Insight ML 🏆</b></p>
 
 
 <div>
@@ -81,7 +81,7 @@ XXXX|PDV1|XXXX|Semana 57,3
 <p></p>
 
 <div align="center" max-width='800'>
-    <h2> Leaderboard de nuestra propuesta </h2>
+    <h2> Leaderboard de nuestra propuesta 🏆 </h2>
     <b><h4>Nuestra solución logró el primer puesto en ambos leaderboards tanto público como privado demonstrando que nuestro modelo es robusto y no tuvo problemas de overfitting.</h4></b>
     <img src='resources/Public_LeaderBoard.jpg'
      width="400" height="600"/>
