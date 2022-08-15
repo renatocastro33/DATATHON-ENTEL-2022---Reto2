@@ -1,4 +1,8 @@
+<!DOCTYPE html>
+<html>
+<head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 <div align="center">
     <img src='resources/Fondo_Datathon_Entel.jpeg'
      width="800" height="300"/>
@@ -153,3 +157,4 @@ XXXX|PDV1|XXXX|Semana 57,3
         <li><a href='https://www.youtube.com/watch?v=pOYAXv15r3A'>Forecasting at Scale: How and Why We Developed Prophet for Forecasting at Facebook</a></li>
     </ul>
 </div>
+</html>
