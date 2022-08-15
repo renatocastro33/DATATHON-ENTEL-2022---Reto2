@@ -20,8 +20,8 @@
 <div>
     <b>Integrantes</b> 
     <ul>
-        <li>Renato Castro Cruz <a href='https://www.linkedin.com/in/renato-castro-cruz-317404137/'><i class="fa fa-linkedin-square" style="font-size:48px;color:blue"></i></a> </li>
-        <li>Cristian Lazo Quispe <a href='linkedin.com/in/cristian-lazo-quispe'><i class="fa fa-linkedin-square" style="font-size:48px;color:blue"></i></a> </li>
+        <li>Renato Castro Cruz <a href='https://www.linkedin.com/in/renato-castro-cruz-317404137/'><img align="left" src="https://raw.githubusercontent.com/username/reponame/branch/foldername/icon.svg" alt="icon | LinkedIn" width="21px"/></a> </li>
+        <li>Cristian Lazo Quispe <a href='linkedin.com/in/cristian-lazo-quispe'><img align="left" src="https://raw.githubusercontent.com/username/reponame/branch/foldername/icon.svg" alt="icon | LinkedIn" width="21px"/></a> </li>
     </ul>
 </div>
 
