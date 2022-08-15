@@ -1,4 +1,11 @@
 
+<p align="center">
+    <img src='resources/Fondo_Datathon_Entel.jpeg'
+     width="800" height="300"/>
+</p>
+
+
+
 
 <p>Desarrollado por:<b> Insight ML</b></p>
 
