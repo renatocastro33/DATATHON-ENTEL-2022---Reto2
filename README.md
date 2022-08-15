@@ -1,8 +1,8 @@
 
-<p align="center">
+<div align="center">
     <img src='resources/Fondo_Datathon_Entel.jpeg'
      width="800" height="300"/>
-</p>
+</div>
 
 
 
