@@ -79,10 +79,7 @@ XXXX|PDV1|XXXX|Semana 57,3
 
 </div>
 <p></p>
-<div>
-    <b>Lenguajes de Programación, Librerías, Frameworks a usar</b>
-</div>
-<p></p>
+
 
 <div>
     <b>Procedimiento</b>
@@ -107,6 +104,12 @@ XXXX|PDV1|XXXX|Semana 57,3
 </div>
 
 <p></p>
+
+<div>
+    <b>Lenguajes de Programación, Librerías, Frameworks a usar</b>
+</div>
+<p></p>
+
 <div>
     Lenguajes de Programación:
     <ul>
