@@ -19,15 +19,46 @@ warnings.filterwarnings('ignore')
 
 
 def seed_everything(seed=0):
+    """
+    Function to make reproducible project
+    
+    Args:
+        seed (int): number of seed project
+    Returns:
+        None
+    
+    """
     random.seed(seed)
     np.random.seed(seed)
     
 def columns_to_str(df,columns):
+    """
+    Function to make columns as string
+    
+    Args:
+        df (dataframe): dataset to make changes
+        columns (list): list of names to make changes
+    
+    Returns:
+        df (dataframe): dataset changed
+        
+    """
     for name in columns:
         df[name] = df[name].astype(str)
     return df
 
 def columns_to_int(df,columns):
+    """
+    Function to make columns as integer
+    
+    Args:
+        df (dataframe): dataset to make changes
+        columns (list): list of names to make changes
+    
+    Returns:
+        df (dataframe): dataset changed
+        
+    """
     for name in columns:
         df[name] = df[name].astype(int)
     return df
@@ -38,7 +69,16 @@ def columns_to_int(df,columns):
 
 
 def fe_dates(name,df):
+    """
+    Function to make feature engineering of date
     
+    Args:
+        name     (str): Name of date column
+        df (dataframe): dataset with date column
+    Returns:
+        df (dataframe): dataset with new features
+    
+    """
     df[name] = pd.to_datetime(df[name], errors='coerce')
     
     df['year']  = df[name].dt.year
@@ -60,8 +100,15 @@ def fe_dates(name,df):
 
 
 def reduce_mem_usage(df):
-    """ iterate through all the columns of a dataframe and modify the data type
-        to reduce memory usage.        
+    """ 
+    Function to iterate through all the columns of a dataframe and modify the data type to reduce memory usage.     
+    
+    Args:
+        df (dataframe): dataset to reduce memory
+        
+    Returns:
+       df  (dataframe): dataset changed
+       
     """
     start_mem = df.memory_usage().sum() / 1024**2
     print('Memory usage of dataframe is {:.2f} MB'.format(start_mem))
@@ -109,6 +156,18 @@ def reduce_mem_usage(df):
 
 ## Merging by concat to not lose dtypes
 def merge_by_concat(df1, df2, merge_on):
+    """
+    Function to merge 2 different dataset base on columns
+    
+    Args:
+        df1  (dataframe): dataset base 
+        df2  (Dataframe): dataset of new features
+        merge_on  (list): list of names to make the merge
+    
+    Returns:
+        df1  (dataframe): dataset with new features
+    
+    """
     merged_gf = df1[merge_on]
     merged_gf = merged_gf.merge(df2, on=merge_on, how='left')
     new_columns = [col for col in list(merged_gf) if col not in merge_on]
@@ -119,6 +178,17 @@ def merge_by_concat(df1, df2, merge_on):
 
 
 def join_columns_string(data,columns):
+    """
+    Function to join columns string in single column
+    
+    Args:
+        data  (dataframe): dataset base
+        columns    (list): list of names to join
+        
+    Results:
+        auxiliat (dataframe): dataset of new column 
+        
+    """
     auxiliar = None
     for column in columns:
         if auxiliar is None:
@@ -127,20 +197,40 @@ def join_columns_string(data,columns):
             auxiliar += '_' +data[column].astype(str)        
     return auxiliar
 
-def get_store_item(df,s100,i100,c100,):
+def get_store_item(df,modelo,punto_venta,gama):
     '''
-    Filter data by modelo, punto de venta y gamma
+    Function to Filter data by modelo, punto de venta and gamma
+    
+    Args:
+        df       (dataframe): dataset base
+        modelo         (str): name of modelo
+        punto_venta    (str): name of punto de venta 
+        gama           (str): name of gama 
+    
+    Returns:
+        
+        sub_data (Dataframe): sub group of data by modelo, punto de venta and gama
+    
     '''
     
-    return df[(df['Z_MODELO']==s100) & (df['Z_PUNTO_VENTA']==i100)& (df['Z_GAMA']==c100)]
+    return df[(df['Z_MODELO']==modelo) & (df['Z_PUNTO_VENTA']==punto_venta)& (df['Z_GAMA']==gama)]
 
 
 
 
 def my_df_describe(df,name = 'dataset',show = True,path='',save=False):
     '''
-    Describe categorical and numeric values
+    Function to describe categorical and numeric values
     
+    Args:
+        df  (dataframe): dataset base
+        name      (str): name of the dataset
+        show     (bool): boolean to show describe or no
+        path      (Str): path to save describe of data
+        save     (bool): boolean to save describe in csv
+    Returns:
+        numeric_desc     (dataframe): describe of numeric columns
+        categorical_desc (Dataframe): describe of categorical columns
     '''
     
     path_analisis    = ''
@@ -201,7 +291,16 @@ def my_df_describe(df,name = 'dataset',show = True,path='',save=False):
 
 def get_perceptiles(values,mini=25,maxi=75):
     '''
-    get percentiles
+    Function to get percentiles of a vector
+    
+    Args:
+        values   (np.array): vector of values
+        mini          (int): minimum value of percentile
+        maxi          (int): maximum value of percentile
+    
+    Returns:
+        Q1      (float): percentile 1
+        Q3      (float): percentile 2
     '''
     Q1,Q3=np.percentile(values,[mini,maxi])
     return Q1,Q3
