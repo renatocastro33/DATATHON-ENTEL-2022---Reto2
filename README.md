@@ -80,6 +80,12 @@ XXXX|PDV1|XXXX|Semana 57,3
 </div>
 <p></p>
 
+<div align="center" max-width='800'>
+    <img src='resources/Private_LeaderBoard.jpg'
+     width="400" height="500"/>
+    <img src='resources/Public_LeaderBoard.jpg'
+     width="400" height="500"/>
+</div>
 
 <div>
     <b>Procedimiento</b>
