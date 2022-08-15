@@ -87,7 +87,7 @@ XXXX|PDV1|XXXX|Semana 57,3
 <div>
     <b>Procedimiento</b>
     <ol>
-        <li>Instalar con <code>pip install -r requirements.txt</code> las librerías necesarias para correr los scripts de Python/o/Notebooks</li>
+        <li>Instalar con <code>pip install -r requirements.txt</code> las librerías necesarias para correr los scripts de Python/o/Notebooks. (Ver Recomendación 1)</li>
         <li>En la carpeta <b>notebooks</b>, correr el notebook 1.Preprocessing.ipynb o el script Preprocessing.py. (Ver Recomendación 3)</li>
         <li>En la carpeta <b>notebooks</b>, correr el notebook 2.Modeling_Prophet_Ratios.ipynb o el script Modeling_Prophet_Ratios.py. (Ver Recomendación 2)</li>
         <li>En la carpeta <b>notebooks/Forecasting_por_semanas</b>, correr el notebook 3.PreprocesamientoTemporal.ipynb y 4.CreacionDatasetTemporal.ipynb o sus scripts .py homólogos (Ver Recomendación 2).
@@ -100,8 +100,9 @@ XXXX|PDV1|XXXX|Semana 57,3
 <div>
     <b>Recomendaciones</b>
     <ol>
+        <li>Se recomienda instalar las librerías desde una terminal como anaconda prompt en Windows o Linux/MAC terminal ya que correrlo desde los notebooks puede tener problemas.</li>
         <li>Se recomienda correr el proyecto usando los notebooks para sacarle provecho a todo el análisis realizado y la propuesta del modelo.</li>
-        <li>Es necesario instalar las librerías desde una terminal como anaconda prompt en Windows o 
+        <li>En el caso del notebook Preprocessing si gusta puede optar por el script Preprocessing.py ya que no se tiene mucho análisis de datos.</li>
     </ol>
 </div>
 
@@ -110,7 +111,6 @@ XXXX|PDV1|XXXX|Semana 57,3
     Lenguajes de Programación:
     <ul>
         <li><a href='https://www.anaconda.com/'>Anaconda - Python</a></li>
-        <li><a href='https://www.javascript.com/'>Javascript</a></li>
     </ul>
 </div>
 
@@ -118,10 +118,9 @@ XXXX|PDV1|XXXX|Semana 57,3
     Frameworks y librerías:
     <ul>
         <li><a href='https://scikit-learn.org/stable/'>Scikit-learn</a>, <a href='https://pandas.pydata.org/'>Pandas</a>, <a href='https://numpy.org/'>Numpy</a></li>
-        <li><a href='https://lightgbm.readthedocs.io/en/latest/index.html'>LightGBM</a>, <a href='https://xgboost.ai/'>XgBoost</a>, <a href='https://catboost.ai/'>CatBoost</a></li>
+        <li> <a href='https://xgboost.ai/'>XgBoost</a>, <a href='https://catboost.ai/'>CatBoost</a></li>
         <li><a href='http://seaborn.pydata.org/'>Seaborn</a>, <a href='https://plotly.com/python/'>Plotly</a></li>
         <li><a href='https://facebook.github.io/prophet/'>Prophet</a></li>
-        <li><a href='https://pytorch.org/'>PyTorch</a></li>
     </ul>
 </div>
 
