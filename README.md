@@ -13,8 +13,8 @@
 <div>
     <b>Integrantes</b> 
     <ul>
-        <li>Renato Castro Cruz</li>
-        <li>Cristian Lazo Quispe</li>
+        <li>Renato Castro Cruz <i class="fab fa-linkedin"></i> </li>
+        <li>Cristian Lazo Quispe <i class="fab fa-linkedin"></i> </li>
     </ul>
 </div>
 
