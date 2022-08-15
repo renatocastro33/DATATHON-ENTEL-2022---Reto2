@@ -90,9 +90,10 @@ XXXX|PDV1|XXXX|Semana 57,3
         <li>Instalar con <code>pip install -r requirements.txt</code> las librerías necesarias para correr los scripts de Python/o/Notebooks</li>
         <li>En la carpeta <b>notebooks</b>, correr el notebook 1.Preprocessing.ipynb o el script Preprocessing.py. (Ver Recomendación 3)</li>
         <li>En la carpeta <b>notebooks</b>, correr el notebook 2.Modeling_Prophet_Ratios.ipynb o el script Modeling_Prophet_Ratios.py. (Ver Recomendación 2)</li>
-        <li>En la carpeta <b>notebooks</b>, correr el notebook 3.Modeling_Prophet_Ratios.ipynb o el script Modeling_Prophet_Ratios.py. (Ver Recomendación 2)</li>
+        <li>En la carpeta <b>notebooks/Forecasting_por_semanas</b>, correr el notebook 3.PreprocesamientoTemporal.ipynb y 4.CreacionDatasetTemporal.ipynb o sus scripts .py homólogos (Ver Recomendación 2).
+        <li>Alternativamente si se desea ahorrar el uso de memoria RAM y tiempo (2 horas aprox.) para el procesamiento temporal de la data, puede omitir el paso 3 y descargar todos los archivos de la siguiente ruta: https://drive.google.com/drive/u/1/folders/1ZYyjUH2FAHhVYJ9avH_GFFhOjAP_ekRV</li>
         
-        <li>Descargar todos los archivos de la siguiente ruta: https://drive.google.com/drive/u/1/folders/1ZYyjUH2FAHhVYJ9avH_GFFhOjAP_ekRV para simplificar la reproducción del código ya que algunos scripts demoran 2 horas aprox.</li>
+        
     </ol>
 </div>
 
