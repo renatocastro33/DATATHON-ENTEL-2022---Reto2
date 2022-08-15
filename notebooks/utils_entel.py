@@ -1,14 +1,14 @@
 ### Librerías de Ciencia de Datos ###
 import numpy as np # Librería de operaciones matriciales
 import pandas as pd # Librería de manipulación de data tabular
-import seaborn as sns # Librería de Data Visualization
+#import seaborn as sns # Librería de Data Visualization
 
 ### Otras Librerías Útiles ###
 import inspect # Librería que permite listar variables del kernel presente
 import os # Librería para realizar comandos de sistema operativo
 import datetime # Librería para manejar clases de tiempo y fechas
-import warnings # Librería para ignorar warnings
-warnings.filterwarnings('ignore') #Ignoraremos cualquier warning con esta librería
+#import warnings # Librería para ignorar warnings
+#warnings.filterwarnings('ignore') #Ignoraremos cualquier warning con esta librería
 import random # Librería para generar número(s) random
 import pickle # Librería para leer archivos pickle
 
