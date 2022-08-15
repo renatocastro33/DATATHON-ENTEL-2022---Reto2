@@ -1,3 +1,7 @@
+*.png
+
+requirements_all.txt
+
 *.zip
 
 requirements.txt

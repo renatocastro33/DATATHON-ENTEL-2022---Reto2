@@ -17,13 +17,36 @@ PATH_RESULTS = None
 SHIFT = None
 TARGET = None
 
-def define_parameters(PATH_RESULTS,SHIFT,TARGET):
+def define_parameters(PATH_RESULTS,SHIFT,TARGET="Demanda"):
+    """
+    Define parameters in training proccess to save models and predictions in folder
+    
+    Args:
+    
+        PATH_RESULTS (str): path to save results as models and predictions
+        SHIFT        (int): the number of week to analysis ( SHIFT =1 to analyse WEEK 1)
+        TARGET       (str): the name of the target variable (TARGET = Demanda)
+        
+    Returns:
+        None
+        
+    """
     PATH_RESULTS = PATH_RESULTS
     SHIFT = SHIFT
     TARGET = TARGET
     submission_analysis.TARGET = TARGET
     
 def create_path(path):
+    """
+    Function to create a root of path recursively
+    
+    Args:
+        path (str): path to create folder
+        
+    Returns:
+        None
+    
+    """
     print('create folder',path)
     directory = ''
     for sub_path in path.split('/'):
@@ -34,8 +57,27 @@ def create_path(path):
 
 
 def analysis_model(X_train,y_train,X_validation,y_validation,X_test,y_test,model):
+    """
+    Function to get metrics and evaluate fitting with validation and test RMSE
+    
+    Args:
+        X_train      (dataframe): dataset to training
+        X_validation (dataframe): dataset to validation
+        X_test       (dataframe): dataset to testing
+        y_train      (dataframe): target of training
+        y_validation (dataframe): target of validation
+        y_test       (dataframe): target of testing
+        model     (model object): model to make inference (xgboost model)
+        
+    Returns:
+        X_validation_pred (dataframe): validation prediction resullt 
+        X_test_pred       (dataframe): testing prediction result
+        df_val_rmse       (float)    : RMSE of validation
+        df_test_rmse      (float)    : RMSE of testing
+        
+    """
     print('Doing predictions...')
-    #X_train_pred      = model.predict(X_train)
+    #X_train_pred      = model.predict(X_train) # uncomment if the speed is no neccesary
     X_validation_pred = model.predict(X_validation)
     X_test_pred       = model.predict(X_test)
     print('Doing metrics ... ')
@@ -52,6 +94,17 @@ def analysis_model(X_train,y_train,X_validation,y_validation,X_test,y_test,model
     return X_validation_pred,X_test_pred,df_val_rmse,df_test_rmse
 
 def save_feature_importance(path,df_feature_importance):
+    """
+    Function to plot and save feature importance
+    
+    Args:
+        path                        (str): path to save image of feature importance
+        df_feature_importance (dataframe): dataframe of importance for each variable in the model 
+    
+    Returns:
+        None
+        
+    """
     print('saving feature importance ..',path)
     plt.figure(figsize=(14,40))
     sns.barplot(x="importance",y="feature",data=df_feature_importance)
@@ -61,7 +114,18 @@ def save_feature_importance(path,df_feature_importance):
     plt.close()
 
 def save_test_prediction(path,X_test_pred,y_test):
+    """
+    Function to save plot of prediction of testing prediction and real values to evaluation overfitting in training
     
+    Args:
+        path              (str): path to save testing predictions an real values 
+        X_test_pred (dataframe): dataframe of testing predictions
+        y_test      (dataframe): dataframe of testing real values
+    
+    Returns:
+        None
+        
+    """
     print('saving test prediction ..',path)
     fig = plt.figure(figsize=(20,4))
     plt.plot(X_test_pred,'b', alpha=0.7)
@@ -74,6 +138,30 @@ def save_test_prediction(path,X_test_pred,y_test):
 
 
 def training_model(model_type,model_version,X_train,y_train,X_validation,y_validation,X_test,y_test,X_submission,df_test,result):
+    """
+    Function to train model and evaluate fitting
+    
+    
+    Args:
+        model_type         (str): model name to make training (xgbost)
+        model_version      (str): model version name to save training and make different experiments
+        X_train      (dataframe): dataset to training
+        X_validation (dataframe): dataset to validation
+        X_test       (dataframe): dataset to testing
+        y_train      (dataframe): target of training
+        y_validation (dataframe): target of validation
+        y_test       (dataframe): target of testing
+        df_test      (dataframe): dataset to submission (unseen data)
+        result       (dataframe): dataset of last inference in submission  (predicted data)
+        
+    Returns:
+    
+        X_validation_pred (dataframe): validation prediction resullt 
+        X_test_pred       (dataframe): testing prediction result
+        df_submission     (dataframe): submission prediction result
+        feature_importance(dataframe): feature importance of each value in the training 
+    
+    """
 
     directory_model = os.path.join(PATH_RESULTS,model_type,model_version,'shift_'+str(SHIFT))
     
@@ -143,6 +231,11 @@ def training_model(model_type,model_version,X_train,y_train,X_validation,y_valid
     submission_weeks_plot_name_to_save   = metrics_name +'_prediction_submission_weeks.png'
     path_weeks_submission      = os.path.join(directory_model,submission_weeks_plot_name_to_save)
     submission_analysis.save_plot_submission_weeks(df_submission,path_weeks_submission)
+
+    
+    submission_total_weeks_plot_name_to_save   = metrics_name +'_prediction_submission_total_weeks.png'
+    path_total_weeks_submission      = os.path.join(directory_model,submission_total_weeks_plot_name_to_save)
+    submission_analysis.save_plot_submission_total_weeks(df_submission,path_total_weeks_submission)
     
     return X_validation_pred,X_test_pred,df_submission,model.get_feature_importance()
 
@@ -151,6 +244,27 @@ def training_model(model_type,model_version,X_train,y_train,X_validation,y_valid
 
 
 def training_model_cv(model_type,model_version,X_train,y_train,X_test,y_test,X_submission,df_test,result,N_FOLDS):
+    """
+    Function to make Cross Validation of different models base of N_FOLDS  and evaluate fitting
+    
+    
+    Args:
+        model_type         (str): model name to make training (xgbost)
+        model_version      (str): model version name to save training and make different experiments
+        X_train      (dataframe): dataset to training
+        X_test       (dataframe): dataset to testing
+        y_train      (dataframe): target of training
+        y_test       (dataframe): target of testing
+        df_test      (dataframe): dataset to submission (unseen data)
+        result       (dataframe): dataset of last inference in submission  (predicted data)
+        N_FOLDS            (int): number of folds in cross validation
+        
+    Returns:
+ 
+        df_submission      (dataframe): submission prediction result (mean of each fold)
+        feature_importance (dataframe): feature importance of cross validation (mean of each fold)
+    
+    """
     objects = []
     numerics = []
     for c in X_train:
@@ -278,5 +392,8 @@ def training_model_cv(model_type,model_version,X_train,y_train,X_test,y_test,X_s
     path_weeks_submission      = os.path.join(directory_model,submission_weeks_plot_name_to_save)
     submission_analysis.save_plot_submission_weeks(df_submission,path_weeks_submission)
     
+    submission_total_weeks_plot_name_to_save   = metrics_name +'_prediction_submission_total_weeks.png'
+    path_total_weeks_submission      = os.path.join(directory_model,submission_total_weeks_plot_name_to_save)
+    submission_analysis.save_plot_submission_total_weeks(df_submission,path_total_weeks_submission)
     
     return df_submission,all_features 

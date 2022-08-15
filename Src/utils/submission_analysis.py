@@ -1,10 +1,23 @@
 import matplotlib.pyplot as plt
 from sklearn.metrics import mean_squared_error
+import pandas as pd
+import seaborn as sns
 
 TARGET = None
 
 
 def get_submission(df_test,prediction_value):
+    """
+    Function to get submission format base of dataset of submission and prediction inference by our model
+    
+    Args: 
+        df_test           (dataframe): dataset of submission features
+        prediction_values (dataframe): inference result of our model
+        
+    Returns:
+        base  (dataframe): dataset to submission
+    
+    """
     df_test.reset_index(drop=True,inplace=True)
     df_test[TARGET] = prediction_value
     df_test[TARGET][df_test[TARGET]<=1e-5] = 0
@@ -16,6 +29,15 @@ def get_submission(df_test,prediction_value):
     return base
 
 def save_submission(df_submission,df_val_rmse,df_test_rmse,path,save = False):
+    """
+    Function to save submission and get RMSE reference base of last submissions
+    
+    Args:
+        df_submissions  (dataframe): dataset of submission with target prediction
+        df_val_rmse    (int): 
+        df_test_rmse
+    
+    """
     print('saving submission ..',path)
 
     rmse_target = mean_squared_error(df_submission[TARGET],df_submission[TARGET+'_real'], squared=False)
@@ -113,5 +135,14 @@ def save_plot_submission_weeks(df_submission,path):
         plt.boxplot(my_dict.values())
         plt.xticks(range(1,len(my_dict.keys())+1),my_dict.keys())
     plt.suptitle('Prediction by weeks')
+    plt.savefig(path)
+    plt.close()
+    
+def save_plot_submission_total_weeks(df_submission,path):
+    total_semanal = df_submission[['Z_WEEK',TARGET+'_real',TARGET]].groupby(['Z_WEEK']).sum().reset_index()
+    total_semanal_melt = pd.melt(total_semanal, id_vars =['Z_WEEK'], value_vars =[TARGET+'_real',TARGET])
+    plt.figure(figsize=(15,8))
+    sns.lineplot(x="Z_WEEK", y="value", data=total_semanal_melt, hue="variable",style="variable",markers=True, dashes=False)
+    plt.suptitle('Prediction sum total weeks')
     plt.savefig(path)
     plt.close()
