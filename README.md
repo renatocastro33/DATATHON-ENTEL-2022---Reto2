@@ -19,14 +19,14 @@
 </div>
 
 
-<div><b>Descripción del reto</b></div>
+<div><h2>Descripción del reto</h2></div>
 
 <div>
     <p>El reto consiste en desarrollar un algoritmo que prediga la demanda de un modelo en un punto de venta de acuerdo a su gama semanalmente, sin usar herramientas, aplicaciones y/o API de paga y además de no generar gastos. <b>Esto es una restricción muy importante</b></p>
 </div>
 
 
-<div><b>Descripción del dataset</b></div>
+<div><h2>Descripción del dataset</h2></div>
 <div>
     Se va a predecir a nivel de semana y se tiene los siguientes archivos:
 
@@ -50,19 +50,19 @@
     </ul>
 </div>
     
-<div><b>Target</b></div>
+<div><h2>Target</h2></div>
 
 <div>
     <p>Se pide determinar la demanda semanal de un modelo en un punto de venta de acuerdo a su gama.</p>
 </div>
 
-<div><b>Evaluación</b></div>
+<div><h2>Evaluación</h2></div>
 
 <div>
     <p>Se evaluará a los participantes en función del RMSE, de menor a mayor. Durante la competencia se reportarán resultados sobre un subconjunto del set de evaluación (50%), pero los resultados finales se calcularán sobre los datos restantes (50%)</p>
 </div>
 
-<div><b>Formato del Kaggle Submission</b></div>
+<div><h2>Formato del Kaggle Submission</h2></div>
 
 <div>
     <p>Para todos los participantes, los archivos subidos deberán tener las siguientes columnas: ID yDemanda. Tener en cuenta que el valor de "Demanda" hace referencia al valor forecasteado. Al mismo tiempo, la estructura de la variable "ID" es Modelo|Punto de venta|Gama|# Semana.</p>
@@ -80,17 +80,17 @@ XXXX|PDV1|XXXX|Semana 57,3
 </div>
 <p></p>
 
-<div align="center" max-width='1000'>
+<div align="center" max-width='800'>
     <h2> Leaderboard de nuestra propuesta </h2>
     <b><h4>Nuestra solución logró el primer puesto en ambos leaderboards tanto púlbico como privado demonstrando que nuestro modelo es robusto y no tuvo problemas de overfitting.</h4></b>
     <img src='resources/Public_LeaderBoard.jpg'
-     width="500" height="600"/>
+     width="400" height="600"/>
     <img src='resources/Private_LeaderBoard.jpg'
-     width="500" height="600"/>
+     width="400" height="600"/>
 </div>
 
 <div>
-    <b>Procedimiento</b>
+    <h2>Procedimiento</h2>
     <ol>
         <li>Instalar con <code>pip install -r requirements.txt</code> las librerías necesarias para correr los scripts de Python/o/Notebooks. (Ver Recomendación 1)</li>
         <li>En la carpeta <b>notebooks</b>, correr el notebook 1.Preprocessing.ipynb o el script Preprocessing.py. (Ver Recomendación 3)</li>
@@ -103,7 +103,7 @@ XXXX|PDV1|XXXX|Semana 57,3
 </div>
 
 <div>
-    <b>Recomendaciones</b>
+    <h2>Recomendaciones</h2>
     <ol>
         <li>Se recomienda instalar las librerías desde una terminal como anaconda prompt en Windows o Linux/MAC terminal ya que correrlo desde los notebooks puede tener problemas.</li>
         <li>Se recomienda correr el proyecto usando los notebooks para sacarle provecho a todo el análisis realizado y la propuesta del modelo.</li>
@@ -114,7 +114,7 @@ XXXX|PDV1|XXXX|Semana 57,3
 <p></p>
 
 <div>
-    <b>Lenguajes de Programación, Librerías, Frameworks a usar</b>
+    <h2>Lenguajes de Programación, Librerías, Frameworks a usar</h2>
 </div>
 <p></p>
 
