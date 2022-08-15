@@ -41,8 +41,8 @@
     
 <div>ColumnsColumns
     <ul>
-        <li>Z_MARCA - Marca del equipoZ_MARCA - Marca del equipo</li>
-        <li>Z_GAMA - Gama del equipoZ_GAMA - Gama del equipo</li>
+        <li>Z_MARCA - Marca del equipo</li>
+        <li>Z_GAMA - Gama del equipo</li>
         <li>Z_MODELO - ModeloZ_MODELO - Modelo</li>
         <li>Z_DEPARTAMENTO - Departamento del Perú del punto de venta</li>
         <li>Z_PUNTO_VENTA - Punto de venta a abastecer</li>
@@ -82,6 +82,28 @@ XXXX|PDV1|XXXX|Semana 57,3
 <div>
     <b>Lenguajes de Programación, Librerías, Frameworks a usar</b>
 </div>
+<p></p>
+
+<div>
+    <b>Procedimiento</b>
+    <ol>
+        <li>Instalar con <code>pip install -r requirements.txt</code> las librerías necesarias para correr los scripts de Python/o/Notebooks</li>
+        <li>En la carpeta <b>notebooks</b>, correr el notebook 1.Preprocessing.ipynb o el script Preprocessing.py. (Ver Recomendación 3)</li>
+        <li>En la carpeta <b>notebooks</b>, correr el notebook 2.Modeling_Prophet_Ratios.ipynb o el script Modeling_Prophet_Ratios.py. (Ver Recomendación 2)</li>
+        <li>En la carpeta <b>notebooks</b>, correr el notebook 3.Modeling_Prophet_Ratios.ipynb o el script Modeling_Prophet_Ratios.py. (Ver Recomendación 2)</li>
+        
+        <li>Descargar todos los archivos de la siguiente ruta: https://drive.google.com/drive/u/1/folders/1ZYyjUH2FAHhVYJ9avH_GFFhOjAP_ekRV para simplificar la reproducción del código ya que algunos scripts demoran 2 horas aprox.</li>
+    </ol>
+</div>
+
+<div>
+    <b>Recomendaciones</b>
+    <ol>
+        <li>Se recomienda correr el proyecto usando los notebooks para sacarle provecho a todo el análisis realizado y la propuesta del modelo.</li>
+        <li>Es necesario instalar las librerías desde una terminal como anaconda prompt en Windows o 
+    </ol>
+</div>
+
 <p></p>
 <div>
     Lenguajes de Programación:
