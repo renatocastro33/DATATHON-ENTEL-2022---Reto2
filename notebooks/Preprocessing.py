@@ -18,8 +18,8 @@ descriptive_columns = ['Z_MARCA', 'Z_GAMA', 'Z_MODELO',
 
 
 directory_path = os.getcwd() # Guardamos el directorio donde nos encontramos para evitar hardcodeo.
-raw_train = pd.read_csv(os.path.join(directory_path, '..\\dataset\\train\\train.csv')) # Usando el esquema descrito arriba procedemos a el archivo de train
-raw_test = pd.read_csv(os.path.join(directory_path, '..\\dataset\\test\\test.csv')) # Usando el esquema descrito arriba procedemos a el archivo de test
+raw_train = pd.read_csv(os.path.join(directory_path, '../dataset/train/train.csv')) # Usando el esquema descrito arriba procedemos a el archivo de train
+raw_test = pd.read_csv(os.path.join(directory_path, '../dataset/test/test.csv')) # Usando el esquema descrito arriba procedemos a el archivo de test
 
 
 ### Hallamos la cantidad de registros que hay en cada uno ###
@@ -85,8 +85,8 @@ test['Z_MONTH'] = test['Z_WEEK_DATE'].map(lambda x: x.month)
 test['Z_YEAR'] = test['Z_WEEK_DATE'].map(lambda x: x.year)
 
 
-train.to_csv('..\\dataset\\train\\train_converted.csv', sep = ',', index = False) ### Guardamos el nuevo dataset de raw_train para propositos de modelo.
-test.to_csv('..\\dataset\\test\\test_converted.csv', sep = ',', index = False) ### Guardamos el nuevo dataset de raw_test para propositos de modelo.
+train.to_csv('../dataset/train/train_converted.csv', sep = ',', index = False) ### Guardamos el nuevo dataset de raw_train para propositos de modelo.
+test.to_csv('../dataset/test/test_converted.csv', sep = ',', index = False) ### Guardamos el nuevo dataset de raw_test para propositos de modelo.
 
 
 ### Revertimos el mapeo del diccionario mapping_list con la finalidad de regresar los valores originales anonimizados.
@@ -94,7 +94,7 @@ test.to_csv('..\\dataset\\test\\test_converted.csv', sep = ',', index = False) #
 reverse_mapping = [{v: k for k, v in dictionary.items()} for dictionary in mapping_list ]
 
 
-reverse_mapping_file = '..\\utils\\reverse_dict_mapping_list.txt' ### Guardamos el diccionario en un archivo txt que usaremos para mandar los submissions a Kaggle.
+reverse_mapping_file = '../utils/reverse_dict_mapping_list.txt' ### Guardamos el diccionario en un archivo txt que usaremos para mandar los submissions a Kaggle.
 
 with open(reverse_mapping_file, 'wb') as f:
     pickle.dump(reverse_mapping, f)
