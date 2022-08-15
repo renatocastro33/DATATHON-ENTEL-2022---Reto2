@@ -39,7 +39,7 @@
 </div>
     
     
-<div>ColumnsColumns
+<div>
     <ul>
         <li>Z_MARCA - Marca del equipo</li>
         <li>Z_GAMA - Gama del equipo</li>
