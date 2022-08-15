@@ -7,6 +7,17 @@ TARGET = None
 
 
 def get_submission(df_test,prediction_value):
+    """
+    Function to get submission format base of dataset of submission and prediction inference by our model
+    
+    Args: 
+        df_test           (dataframe): dataset of submission features
+        prediction_values (dataframe): inference result of our model
+        
+    Returns:
+        base  (dataframe): dataset to submission
+    
+    """
     df_test.reset_index(drop=True,inplace=True)
     df_test[TARGET] = prediction_value
     df_test[TARGET][df_test[TARGET]<=1e-5] = 0
@@ -18,6 +29,15 @@ def get_submission(df_test,prediction_value):
     return base
 
 def save_submission(df_submission,df_val_rmse,df_test_rmse,path,save = False):
+    """
+    Function to save submission and get RMSE reference base of last submissions
+    
+    Args:
+        df_submissions  (dataframe): dataset of submission with target prediction
+        df_val_rmse    (int): 
+        df_test_rmse
+    
+    """
     print('saving submission ..',path)
 
     rmse_target = mean_squared_error(df_submission[TARGET],df_submission[TARGET+'_real'], squared=False)
