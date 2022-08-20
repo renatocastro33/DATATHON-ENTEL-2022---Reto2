@@ -5,6 +5,9 @@ from utils import XGBOOST
 # import python libraries
 from sklearn.model_selection import KFold, StratifiedKFold
 from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_absolute_percentage_error
+from sklearn.metrics import mean_absolute_error
+
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
@@ -84,11 +87,28 @@ def analysis_model(X_train,y_train,X_validation,y_validation,X_test,y_test,model
     #df_train_rmse = mean_squared_error(y_train,X_train_pred, squared=False)
     df_val_rmse   = mean_squared_error(y_validation,X_validation_pred, squared=False)
     df_test_rmse  = mean_squared_error(y_test,X_test_pred, squared=False)
+    
+    df_val_mape   = mean_absolute_percentage_error(y_validation[y_validation>0],X_validation_pred[y_validation>0])
+    df_test_mape  = mean_absolute_percentage_error(y_test[y_test>0],X_test_pred[y_test>0])
+    
+    df_val_mase   = mean_absolute_error(y_validation,X_validation_pred)
+    df_test_mase  = mean_absolute_error(y_test,X_test_pred)
+    
     print('Final score mean_squared_error')
     #print('Score train:',df_train_rmse)
     print('Score val  :',df_val_rmse)
     print('Score test :',df_test_rmse)
+    #mean_absolute_percentage_error
     
+    print('Final score mean_absolute_percentage_error')
+    #print('Score train:',df_train_rmse)
+    print('Score val  :',df_val_mape)
+    print('Score test :',df_test_mape)
+    
+    print('Final score mean_absolute_error')
+    #print('Score train:',df_train_rmse)
+    print('Score val  :',df_val_mase)
+    print('Score test :',df_test_mase)
     print('end !')
     #return X_train_pred,X_validation_pred,X_test_pred,df_train_rmse,df_val_rmse,df_test_rmse
     return X_validation_pred,X_test_pred,df_val_rmse,df_test_rmse
@@ -243,7 +263,7 @@ def training_model(model_type,model_version,X_train,y_train,X_validation,y_valid
 
 
 
-def training_model_cv(model_type,model_version,X_train,y_train,X_test,y_test,X_submission,df_test,result,N_FOLDS):
+def training_model_cv(model_type,model_version,X_train,y_train,X_test,y_test,X_submission,df_test,result,N_FOLDS,X_train_Z_WEEK):
     """
     Function to make Cross Validation of different models base of N_FOLDS  and evaluate fitting
     
@@ -324,8 +344,34 @@ def training_model_cv(model_type,model_version,X_train,y_train,X_test,y_test,X_s
     
     cv_train_rmse = np.sqrt(mean_squared_error(fold_pred, y_train))
     cv_test_rmse  = np.sqrt(mean_squared_error(fold_prediction_test, y_test))
+    
+    #mean_absolute_percentage_error
+    
+    cv_train_mape = mean_absolute_percentage_error(y_train[y_train>0], fold_pred[y_train>0])
+    cv_test_mape  = mean_absolute_percentage_error(y_test[y_test>0],fold_prediction_test.values[y_test>0])
+    cv_train_mase = mean_absolute_error(y_train, fold_pred)
+    cv_test_mase  = mean_absolute_error(y_test,fold_prediction_test)
+    
+    df_cv_results = pd.DataFrame(y_train.values,columns=['y_train_real'])
+    df_cv_results['y_train_pred'] = fold_pred
+    #df_cv_results['y_test'] = y_test
+    #df_cv_results['y_test_pred'] = fold_prediction_test.values
+    df_cv_results['Z_MARCA'] = X_train['Z_MARCA'].values
+    df_cv_results['Z_GAMA'] = X_train['Z_GAMA'].values
+    df_cv_results['Z_MODELO'] = X_train['Z_MODELO'].values
+    df_cv_results['Z_DEPARTAMENTO'] = X_train['Z_DEPARTAMENTO'].values
+    df_cv_results['Z_PUNTO_VENTA'] = X_train['Z_PUNTO_VENTA'].values
+    df_cv_results['Z_WEEK'] = X_train_Z_WEEK.values
+    
     print('cv_train_rmse : ',cv_train_rmse)
     print('cv_test_rmse  : ',cv_test_rmse)
+    
+    print('cv_train_mape : ',cv_train_mape)
+    print('cv_test_mape  : ',cv_test_mape)
+    
+    print('cv_train_mase : ',cv_train_mase)
+    print('cv_test_mase  : ',cv_test_mase)
+    
     metrics_name = 'rmse_cv_train_'+str(np.round(cv_train_rmse,4))+'_rmse_cv_test_'+str(np.round(cv_test_rmse,4))
 
     
@@ -372,7 +418,11 @@ def training_model_cv(model_type,model_version,X_train,y_train,X_test,y_test,X_s
     df_submission[TARGET].min(),df_submission[TARGET].max()
     df_submission = df_submission.merge(result[['Z_MODELO','Z_PUNTO_VENTA','Z_GAMA','Z_WEEK',TARGET+'_real']],how='left')
 
-
+    #### save df cv results ######
+    df_cv_results_name_to_save        = metrics_name +'_df_cv_results.csv'
+    path_df_cv_results_name      = os.path.join(directory_model,df_cv_results_name_to_save)
+    df_cv_results.to_csv(path_df_cv_results_name,index=None)
+    
     #### save submission #########
     submission_name_to_save        = metrics_name +'_submission.csv'
     path_submission      = os.path.join(directory_model,submission_name_to_save)
@@ -396,4 +446,6 @@ def training_model_cv(model_type,model_version,X_train,y_train,X_test,y_test,X_s
     path_total_weeks_submission      = os.path.join(directory_model,submission_total_weeks_plot_name_to_save)
     submission_analysis.save_plot_submission_total_weeks(df_submission,path_total_weeks_submission)
     
-    return df_submission,all_features 
+    metrics = [cv_train_rmse,cv_test_rmse,cv_train_mape,cv_test_mape,cv_train_mase,cv_test_mase]
+    
+    return df_submission,all_features,metrics
