@@ -1,5 +1,7 @@
 import matplotlib.pyplot as plt
 from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_absolute_percentage_error
+from sklearn.metrics import mean_absolute_error
 import pandas as pd
 import seaborn as sns
 
@@ -119,10 +121,22 @@ def save_plot_submission_weeks(df_submission,path):
         plt.subplot(10,2,idx*2+1)
         sub_real = df_submission[TARGET+'_real'][df_submission['date_block_num']==i].values
         sub_pred = df_submission[TARGET][df_submission['date_block_num']==i].values
+        
+        week_rmse  = mean_squared_error(sub_real,sub_pred, squared=False)
+        week_mape   = mean_absolute_percentage_error(sub_real[sub_real>0],sub_pred[sub_real>0])    
+        week_mase   = mean_absolute_error(sub_real,sub_pred)
+        print('Final score mean_squared_error'+'week = '+str(i+1))
+        print('Score week '+str(i+1)+'_rmse  :',week_rmse)
+        print('Final score mean_absolute_percentage_error'+'week = '+str(i+1))
+        print('Score week '+str(i+1)+'_mape  :',week_mape)
+        print('Final score mean_absolute_error'+'week = '+str(i+1))
+        print('Score  week '+str(i+1)+'_mase  :',week_mase)
+    
+    
         plt.plot(range(len(sub_real)),sub_real,'ro', alpha=0.3, label= ' real',markersize=2)
         plt.plot(range(len(sub_pred)),sub_pred,'bo', alpha=0.4,label=TARGET+' pred     ',markersize=2)
         difference = mean_squared_error(sub_real,sub_pred, squared=False)
-        plt.title('week = '+str(i)+'| rmse = '+str(difference))
+        plt.title('week = '+str(i+1)+'| rmse = '+str(difference))
         plt.legend( loc ="upper right")
         plt.subplot(10,2,idx*2+2)
         my_dict = {
